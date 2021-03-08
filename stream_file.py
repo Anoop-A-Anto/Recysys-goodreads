@@ -135,7 +135,7 @@ elif choice=="Login":
         
         st.write(recc_df_table.iloc[15:,:6].reset_index(drop=True))
 
-        st.markdown(get_table_download_link(recc_df_table.iloc[15:,:6]), unsafe_allow_html=True)
+        st.markdown(get_table_download_link(recc_df_table.iloc[15:,:6].reset_index(drop=True)), unsafe_allow_html=True)
         for i in range(len(recc_df_table.index)+15):
           st.image( recc_df_table["image_url"][15+i],
                 width=150, # Manually Adjust the width of the image as per requirement
