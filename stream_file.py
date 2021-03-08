@@ -137,9 +137,9 @@ elif choice=="Login":
 
         st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
         for i in range(len(recc_df_table_new.index)):
-          st.image( recc_df_table.iloc[15:,7][i],
+          st.image( recc_df_table.iloc[7][i],
                 width=150, # Manually Adjust the width of the image as per requirement
-            caption=recc_df_table.iloc[15:,4][i]
+            caption=recc_df_table.iloc[4][i]
             )
 
 
