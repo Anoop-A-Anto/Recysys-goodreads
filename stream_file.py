@@ -111,7 +111,13 @@ elif choice=="Login":
         st.subheader("Top N number of Book Recommondations predicted realtime")       
 
         
-        user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
+        #user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
+        user_id=st.text_input("Enter user_id {1-53424} default 1")
+        user_id=int(user_id)
+        if 1<=user_id<=53424:
+            user_id=user_id
+        else:
+            user_id=1
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
         reccom = new_model.predict([pd.Series(us_id_temp),co['book_id'],co.iloc[:,1:]])
@@ -128,7 +134,13 @@ elif choice=="Login":
         recc_df.sort_values(by="rating",ascending=False,inplace=True)   
         recc_df=recc_df.iloc[6:36].reset_index(drop=True)
 
-        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=30, value=5)
+        #num= st.number_input('required_reccomondation_count',  min_value=2, max_value=30, value=5)
+        num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
+        num=int(num)
+        if 2<=num<=30:
+            num=num
+        else:
+            num=2
 
         
         recc_df_table =recc_df.iloc[:num]
