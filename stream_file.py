@@ -93,7 +93,7 @@ elif choice=="Login":
       if task=="Add task":
         st.subheader("Add your task")
       elif task=="Analytics":
-        st.subheader("Analytics")
+        st.subheader("Top N number of Book Recommondations predicted realtime")
         user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
@@ -103,7 +103,8 @@ elif choice=="Login":
         recc_df=pd.DataFrame(reccom,columns=["rating"])
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
-        recc_df_table=recc_df[:21]
+        num= st.number_input('required_reccomondation_count',  min_value=1, max_value=500, value=5)
+        recc_df_table=recc_df[:num]
         recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
         st.write(recc_df_table.iloc[:,:6])
 
