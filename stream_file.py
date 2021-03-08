@@ -119,7 +119,7 @@ elif choice=="Login":
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
         num= st.number_input('required_reccomondation_count',  min_value=2, max_value=50, value=5)
-        recc_df_table=recc_df[:num+15]
+        recc_df_table=recc_df.iloc[15:num+15]
 
         
         recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
@@ -131,16 +131,16 @@ elif choice=="Login":
         del df_new
 
         recc_df_table = recc_df_table[~recc_df_table.book_id.isin(list_books_seen)]
-        recc_df_table_new = recc_df_table.iloc[15:,:6].reset_index(drop=True)
+        recc_df_table_new = recc_df_table.iloc[:,:6].reset_index(drop=True)
         
         st.write(recc_df_table_new)
         
 
         st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
         for i in range(len(recc_df_table_new.index)):
-          st.image( recc_df_table.iloc[15+i,7],
+          st.image( recc_df_table.iloc[i,7],
                 width=150, # Manually Adjust the width of the image as per requirement
-            caption=recc_df_table.iloc[15+i,4]
+            caption=recc_df_table.iloc[i,4]
             )
 
 
