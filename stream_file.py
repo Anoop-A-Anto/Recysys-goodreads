@@ -134,8 +134,7 @@ elif choice=="Login":
         recc_df_table_new = recc_df_table.iloc[15:,:6].reset_index(drop=True)
         
         st.write(recc_df_table_new)
-        st.write(recc_df_table.iloc[7])
-        st.write(recc_df_table.iloc[1])
+        
 
         st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
         for i in range(len(recc_df_table_new.index)):
