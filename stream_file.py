@@ -1,3 +1,5 @@
+  
+
  
 
 import streamlit as st
@@ -118,8 +120,8 @@ elif choice=="Login":
         recc_df=pd.DataFrame(reccom,columns=["rating"])
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
-        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=50, value=5)
-        recc_df_table=recc_df[:num]
+        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=100, value=5)
+        recc_df_table=recc_df[:num+15]
         recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
         
 
@@ -127,14 +129,15 @@ elif choice=="Login":
         df_new.dropna(inplace=True)
         list_books_seen=df_new['book_id'].tolist()
         recc_df_table = recc_df_table[~recc_df_table.book_id.isin(list_books_seen)]
+        #recc_df_table = recc_df_table[15:,:]
         
-        st.write(recc_df_table.iloc[:,:6])
+        st.write(recc_df_table.iloc[15:,:6].reset_index(drop=True))
 
         st.markdown(get_table_download_link(recc_df_table.iloc[:,:6]), unsafe_allow_html=True)
-        for i in range(num):
-          st.image( recc_df_table["image_url"][i],
+        for i in range(len(recc_df_table.index)+15):
+          st.image( recc_df_table["image_url"][15+i],
                 width=150, # Manually Adjust the width of the image as per requirement
-            caption=recc_df_table["title"][i]
+            caption=recc_df_table["title"][15+i]
             )
 
 
@@ -163,6 +166,5 @@ elif choice=="Book":
   st.subheader("Enter Details...")
   userid=st.sidebar.text_input("userid")
   bookid=st.sidebar.text_input("bookid")
-  st.button("SUBMIT")
-  
+  st.button("SUBMIT")  
 
