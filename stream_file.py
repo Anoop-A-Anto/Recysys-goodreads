@@ -151,7 +151,7 @@ elif choice=="Login":
             num=2
         
         recc_df_table =recc_df.iloc[:num]
-        recc_df_table=pd.merge(recc_df,titlefile,left_on="book_id",right_on="book_id")
+        recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
 
         
         recc_df_table_new = recc_df_table.iloc[:,:6].reset_index(drop=True)
