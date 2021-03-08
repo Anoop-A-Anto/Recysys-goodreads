@@ -136,10 +136,10 @@ elif choice=="Login":
         st.write(recc_df_table_new)
 
         st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
-        for i in range(len(recc_df_table.index)+15):
-          st.image( recc_df_table["image_url"][15+i],
+        for i in range(len(recc_df_table_new.index)):
+          st.image( recc_df_table_new["image_url"][i],
                 width=150, # Manually Adjust the width of the image as per requirement
-            caption=recc_df_table["title"][15+i]
+            caption=recc_df_table_new["title"][i]
             )
 
 
