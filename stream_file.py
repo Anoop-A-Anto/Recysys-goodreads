@@ -167,4 +167,3 @@ elif choice=="Book":
   userid=st.sidebar.text_input("userid")
   bookid=st.sidebar.text_input("bookid")
   st.button("SUBMIT")  
-
