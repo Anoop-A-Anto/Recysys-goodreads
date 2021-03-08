@@ -118,8 +118,8 @@ elif choice=="Login":
         recc_df=pd.DataFrame(reccom,columns=["rating"])
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
-        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=25, value=5)
-        recc_df_table=recc_df.iloc[15:num+15]
+        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=15, value=5)
+        recc_df_table=recc_df.iloc[6:num+6]
 
         
         recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
