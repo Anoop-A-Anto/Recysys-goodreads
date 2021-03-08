@@ -118,7 +118,7 @@ elif choice=="Login":
         recc_df=pd.DataFrame(reccom,columns=["rating"])
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
-        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=12, value=5)
+        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=10, value=5)
         recc_df_table=recc_df.iloc[6:num+6]
 
         
