@@ -18,6 +18,23 @@ import joblib
 import base64
 from io import BytesIO
 
+ratings_1=pd.read_csv("ratings_1.csv")
+ratings_2=pd.read_csv("ratings_2.csv")
+ratings_3=pd.read_csv("ratings_3.csv")
+ratings_4=pd.read_csv("ratings_4.csv")
+ratings_5=pd.read_csv("ratings_5.csv")
+
+ratings_df_list=[ratings_1,ratings_2,ratings_3,ratings_4,ratings_5]
+ratings_df=pd.concat(ratings_df_list)
+
+
+
+new_model=tf.models.load_model("modelrecsys.h5")
+co=joblib.load("contentsfile.joblib")
+titlefile=joblib.load('title.joblib')
+
+
+####To download dataframe recommondations
 def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -37,12 +54,6 @@ def get_table_download_link(df):
 
 ##df = ... # your dataframe
 ##st.markdown(get_table_download_link(df), unsafe_allow_html=True)
-
-
-
-new_model=tf.models.load_model("modelrecsys.h5")
-co=joblib.load("contentsfile.joblib")
-titlefile=joblib.load('title.joblib')
 
 
 
@@ -86,31 +97,45 @@ elif choice=="Login":
     result=login_user(username,password)
     if result:
 
-      st.success("LOGGED IN SUCCESSFULLY AS {}".format(username))
+      st.success("LOGGED IN SUCCESSFULLY AS {} ".format(username))
       
-      task=st.selectbox("Task",["Add task","Analytics","Profile"])
       
-      if task=="Add task":
-        st.subheader("Add your task")
-      elif task=="Analytics":
-        st.subheader("Top N number of Book Recommondations predicted realtime")
+      
+      task=st.selectbox("Task",["Help","Start-Analytics","Profile"])
+      
+      if task=="Help":
+        st.subheader("use Start-Analytics for Reccomondations")
+      
+      elif task=="Start-Analytics":
+
+        st.subheader("Top N number of Book Recommondations predicted realtime")       
+
+        
         user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
-
-
         reccom = new_model.predict([pd.Series(us_id_temp),co['book_id'],co.iloc[:,1:]])
         recc_df=pd.DataFrame(reccom,columns=["rating"])
         recc_df["book_id"]=co['book_id'].values
         recc_df.sort_values(by="rating",ascending=False,inplace=True)
-        num= st.number_input('required_reccomondation_count',  min_value=1, max_value=500, value=5)
+        num= st.number_input('required_reccomondation_count',  min_value=2, max_value=50, value=5)
         recc_df_table=recc_df[:num]
         recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
+        
+
+        df_new=ratings_df.where(ratings_df["user_id"]==user_id)
+        df_new.dropna(inplace=True)
+        list_books_seen=df_new['book_id'].tolist()
+        recc_df_table = recc_df_table[~recc_df_table.book_id.isin(list_books_seen)]
+        
         st.write(recc_df_table.iloc[:,:6])
 
         st.markdown(get_table_download_link(recc_df_table.iloc[:,:6]), unsafe_allow_html=True)
-
-
+        for i in range(num):
+          st.image( recc_df_table["image_url"][i],
+                width=150, # Manually Adjust the width of the image as per requirement
+            caption=recc_df_table["title"][i]
+            )
 
 
         
