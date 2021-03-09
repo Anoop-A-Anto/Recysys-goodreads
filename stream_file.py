@@ -16,17 +16,34 @@ import joblib
 import base64
 from io import BytesIO
 
-ratings_1=pd.read_csv("ratings_1.csv")
-ratings_2=pd.read_csv("ratings_2.csv")
-ratings_3=pd.read_csv("ratings_3.csv")
-ratings_4=pd.read_csv("ratings_4.csv")
-ratings_5=pd.read_csv("ratings_5.csv")
+import bz2
+import pickle
+import _pickle as cPickle
 
-ratings_df_list=[ratings_1,ratings_2,ratings_3,ratings_4,ratings_5]
-ratings_df=pd.concat(ratings_df_list)
 
-del ratings_1,ratings_2,ratings_3,ratings_4,ratings_5,ratings_df_list
+# Pickle a file and then compress it into a file with extension 
+def compressed_pickle(title, data):
+  with bz2.BZ2File(title + '.pbz2','w') as f:
+    cPickle.dump(data, f)
 
+# Load any compressed pickle file
+def decompress_pickle(file):
+  data = bz2.BZ2File(file, 'rb')
+  data = cPickle.load(data)
+  return data
+
+# ratings_1=pd.read_csv("ratings_1.csv")
+# ratings_2=pd.read_csv("ratings_2.csv")
+# ratings_3=pd.read_csv("ratings_3.csv")
+# ratings_4=pd.read_csv("ratings_4.csv")
+# ratings_5=pd.read_csv("ratings_5.csv")
+
+# ratings_df_list=[ratings_1,ratings_2,ratings_3,ratings_4,ratings_5]
+# ratings_df=pd.concat(ratings_df_list)
+
+# del ratings_1,ratings_2,ratings_3,ratings_4,ratings_5,ratings_df_list
+
+ratings_df = decompress_pickle('rat1.pbz2') 
 
 
 new_model=tf.models.load_model("modelrecsys.h5")
