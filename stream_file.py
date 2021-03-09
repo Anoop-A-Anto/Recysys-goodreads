@@ -135,6 +135,7 @@ elif choice=="Login":
       
       if task=="Help":
         st.subheader("use Start-Analytics for finding Reccomondations")
+        st.image("http://knowledgequest.aasl.org/wp-content/uploads/2019/05/GoodReads-logo.jpg")
         st.markdown("""**What is Goodreads?**
 
 Goodreads is the largest site for connecting readers with books they will love. Keep track of books you have read, want to read, and are currently reading. Connect with other readers, leave reviews, and get book recommendations. You can even follow your favorite authors! (Follow me on goodreads)
