@@ -234,7 +234,7 @@ elif choice=="Sign up":
     st.info("Goto Login menu")
 
 elif choice=="Book":
-  st.subheader("Books Present)
+  st.subheader("Books Present")
   st.write(titlefile.iloc[:,:6])
   
   
