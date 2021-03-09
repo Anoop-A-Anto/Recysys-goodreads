@@ -146,13 +146,13 @@ elif choice=="Login":
         num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
 
 
-          if num!="":
-              num=int(num)
-              if num<2 or num>30:
-                  num=2                
+        if num!="":
+            num=int(num)
+            if num<2 or num>30:
+                num=2                
 
-          else:
-              num=2
+        else:
+            num=2
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
         
