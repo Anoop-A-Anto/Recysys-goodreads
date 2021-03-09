@@ -106,8 +106,8 @@ def view_all_users():
   return data
 
 
-st.title("...WELCOME...")
-st.title("HYBRID BOOK RECOMMENDATION SYSTEM")
+st.title("...GOODREADS BOOKS...")
+st.markdown("***HYBRID BOOK RECOMMENDATION SYSTEM USING DEPP LEARNING***")
 menu=["Home","Login", "Sign up","Book"]
 choice=st.sidebar.selectbox("Menu",menu)
 
@@ -134,7 +134,14 @@ elif choice=="Login":
       task=st.selectbox("Task",["Help","Start-Analytics","Profile"])
       
       if task=="Help":
-        st.subheader("use Start-Analytics for Reccomondations")
+        st.subheader("use Start-Analytics for finding Reccomondations")
+        st.markdown("""**What is Goodreads?**
+
+Goodreads is the largest site for connecting readers with books they will love. Keep track of books you have read, want to read, and are currently reading. Connect with other readers, leave reviews, and get book recommendations. You can even follow your favorite authors! (Follow me on goodreads)
+
+Goodreads has been around since 2006, but it gained momentum in 2013 when it was bought by Amazon. Now you can integrate goodreads with your kindle and read book samples from Amazon straight from the goodreads site!
+
+When most people think of goodreads, they think of book reviews and book recommendations. These are two of the most important features of goodreads, but there is so much more you can get from the website and app. Read on to learn how to use goodreads and take advantage of the lists, groups, giveaways, quotes, and so much more.""")
       
       elif task=="Start-Analytics":
 
