@@ -208,7 +208,7 @@ elif choice=="Login":
               )
             
         if st.button("Reccomend"):
-          #caching.clear_cache()
+          caching.clear_cache()
           pred(new_model,us_id_temp,co,ratings_df,user_id,titlefile)
 
 
