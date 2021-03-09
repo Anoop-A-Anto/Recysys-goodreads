@@ -34,18 +34,6 @@ def decompress_pickle(file):
   data = cPickle.load(data)
   return data
 
-# ratings_1=pd.read_csv("ratings_1.csv")
-# ratings_2=pd.read_csv("ratings_2.csv")
-# ratings_3=pd.read_csv("ratings_3.csv")
-# ratings_4=pd.read_csv("ratings_4.csv")
-# ratings_5=pd.read_csv("ratings_5.csv")
-
-# ratings_df_list=[ratings_1,ratings_2,ratings_3,ratings_4,ratings_5]
-# ratings_df=pd.concat(ratings_df_list)
-
-# del ratings_1,ratings_2,ratings_3,ratings_4,ratings_5,ratings_df_list
-
-
 
 
 ratings_data = decompress_pickle('rat1.pbz2') 
@@ -108,7 +96,7 @@ def view_all_users():
 
 st.title("      GOODREADS BOOKS   ")
 st.markdown("###***HYBRID BOOK RECOMMENDATION SYSTEM USING DEEP LEARNING***")
-st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=1000)
+st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=700)
 
 st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
 
@@ -140,7 +128,7 @@ elif choice=="Login":
       
       if task=="Info":
         st.subheader("use Start-Analytics for finding Reccomondations")
-        st.image("http://knowledgequest.aasl.org/wp-content/uploads/2019/05/GoodReads-logo.jpg",width=None)
+        st.image("http://knowledgequest.aasl.org/wp-content/uploads/2019/05/GoodReads-logo.jpg",width=500)
         st.markdown("""**What is Goodreads?**
 
 Goodreads is the largest site for connecting readers with books they will love. Keep track of books you have read, want to read, and are currently reading. Connect with other readers, leave reviews, and get book recommendations. You can even follow your favorite authors! (Follow me on goodreads)
