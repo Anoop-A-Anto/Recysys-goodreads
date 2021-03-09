@@ -142,6 +142,17 @@ elif choice=="Login":
                 
         else:
             user_id=1
+            
+        num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
+
+
+          if num!="":
+              num=int(num)
+              if num<2 or num>30:
+                  num=2                
+
+          else:
+              num=2
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
         
@@ -163,16 +174,7 @@ elif choice=="Login":
 
           #num= st.number_input('required_reccomondation_count',  min_value=2, max_value=30, value=5)
 
-          num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
-
-
-          if num!="":
-              num=int(num)
-              if num<2 or num>30:
-                  num=2                
-
-          else:
-              num=2
+          
 
           recc_df_table =recc_df.iloc[:num]
           recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
