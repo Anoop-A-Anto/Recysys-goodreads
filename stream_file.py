@@ -108,15 +108,15 @@ def view_all_users():
 
 st.title("      GOODREADS BOOKS   ")
 st.markdown("###***HYBRID BOOK RECOMMENDATION SYSTEM USING DEEP LEARNING***")
-st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=None)
+st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=1000)
 
-st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. SignUp first and tick login after entering the username and password")
-st.markdown("After Login please go to Task options in center main dropdown menu-Info/Start-Analytics (for Reccomondations)/ Account Details")
+st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
+
 menu=["Home","Login", "Sign up","Book"]
 choice=st.sidebar.selectbox("Menu",menu)
 
 if choice=="Home":
-  st.subheader("HOME")
+  st.markdown("_you are in HOME view_")
 
 elif choice=="Login":
   st.subheader("Login Section")
@@ -132,6 +132,7 @@ elif choice=="Login":
     if result:
 
       st.success("LOGGED IN SUCCESSFULLY AS {} ".format(username))
+      st.markdown("After Login please select any one of below Task options -**_Info_, _Start-Analytics_ (for Reccomondations), _Account Details_")
       
       
       
