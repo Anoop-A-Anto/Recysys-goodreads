@@ -106,8 +106,12 @@ def view_all_users():
   return data
 
 
-st.title("...GOODREADS BOOKS...")
-st.markdown("***HYBRID BOOK RECOMMENDATION SYSTEM USING DEPP LEARNING***")
+st.title("      GOODREADS BOOKS   ")
+st.markdown("###***HYBRID BOOK RECOMMENDATION SYSTEM USING DEEP LEARNING***")
+st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=None)
+
+st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. SignUp first and tick login after entering the username and password")
+st.markdown("After Login please go to Task options in center main dropdown menu-Info/Start-Analytics (for Reccomondations)/ Account Details")
 menu=["Home","Login", "Sign up","Book"]
 choice=st.sidebar.selectbox("Menu",menu)
 
@@ -131,11 +135,11 @@ elif choice=="Login":
       
       
       
-      task=st.selectbox("Task",["Help","Start-Analytics","Profile"])
+      task=st.selectbox("Task",["Info","Start-Analytics","Account Details"])
       
-      if task=="Help":
+      if task=="Info":
         st.subheader("use Start-Analytics for finding Reccomondations")
-        st.image("http://knowledgequest.aasl.org/wp-content/uploads/2019/05/GoodReads-logo.jpg")
+        st.image("http://knowledgequest.aasl.org/wp-content/uploads/2019/05/GoodReads-logo.jpg",width=None)
         st.markdown("""**What is Goodreads?**
 
 Goodreads is the largest site for connecting readers with books they will love. Keep track of books you have read, want to read, and are currently reading. Connect with other readers, leave reviews, and get book recommendations. You can even follow your favorite authors! (Follow me on goodreads)
@@ -218,7 +222,7 @@ When most people think of goodreads, they think of book reviews and book recomme
 
 
         
-      elif task=="Profile":
+      elif task=="Info":
         st.subheader("User Profiles")
         user_result=view_all_users()
         clean_db=pd.DataFrame(user_result,columns=["Username","Password"])
