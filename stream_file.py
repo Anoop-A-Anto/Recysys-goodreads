@@ -45,10 +45,22 @@ def decompress_pickle(file):
 
 # del ratings_1,ratings_2,ratings_3,ratings_4,ratings_5,ratings_df_list
 
-ratings_df = decompress_pickle('rat1.pbz2') 
 
-ratings_df=ratings_df.sort_values(by="user_id",ascending=True).reset_index(drop=True)
-ratings_df=ratings_df[ratings_df["user_id"]<2501].reset_index(drop=True)
+
+
+ratings_data = decompress_pickle('rat1.pbz2') 
+
+ratings_df1=ratings_data.sort_values(by="user_id",ascending=True).reset_index(drop=True)
+
+ratings_df1=ratings_df1[ratings_df1["user_id"]<2501].reset_index(drop=True)
+
+del ratings_data,ratings_df
+
+@st.cache(suppress_st_warning=True)
+def ratings(ratings_df1):
+  return ratings_df1
+
+ratings_df = ratings(ratings_df1)
 
 
 new_model=tf.models.load_model("modelrecsys.h5")
@@ -196,7 +208,7 @@ elif choice=="Login":
               )
             
         if st.button("Reccomend"):
-          caching.clear_cache()
+          #caching.clear_cache()
           pred(new_model,us_id_temp,co,ratings_df,user_id,titlefile)
 
 
