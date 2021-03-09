@@ -96,7 +96,7 @@ def view_all_users():
 
 st.title("      GOODREADS BOOKS   ")
 st.markdown("###***HYBRID BOOK RECOMMENDATION SYSTEM USING DEEP LEARNING***")
-st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=700)
+st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=850)
 
 st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
 
