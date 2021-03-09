@@ -205,6 +205,7 @@ elif choice=="Login":
             
         if st.button("Reccomend"):
           caching.clear_cache()
+          st.success("Showing {} Recommondations for user_id {} ".format(num,user_id))
           pred(new_model,us_id_temp,co,ratings_df,user_id,titlefile)
 
 
