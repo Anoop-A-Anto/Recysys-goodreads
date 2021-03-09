@@ -137,7 +137,7 @@ elif choice=="Login":
         if user_id!="":
             user_id=int(user_id)
             if user_id<1 or user_id>53424:
-              caching.clear_cache()
+              
               user_id=1                
                 
         else:
