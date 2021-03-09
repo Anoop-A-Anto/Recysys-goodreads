@@ -235,6 +235,8 @@ elif choice=="Sign up":
 
 elif choice=="Books":
   st.subheader("Books Present")
+  st.markdown("Showing 8900 books of different languages")
   st.write(titlefile.iloc[:,:6])
+  st.markdown(get_table_download_link(titlefile.iloc[:,:6]), unsafe_allow_html=True)
   
   
