@@ -20,6 +20,8 @@ import bz2
 import pickle
 import _pickle as cPickle
 
+from streamlit import caching
+
 
 # Pickle a file and then compress it into a file with extension 
 def compressed_pickle(title, data):
@@ -130,58 +132,66 @@ elif choice=="Login":
         
         #user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
         
-        user_id=st.text_input("Enter user_id {1-53424} default 1")
+        user_id_inp=st.text_input("Enter user_id {1-53424} default 1")
+        
         if user_id!="":
             user_id=int(user_id)
             if user_id<1 or user_id>53424:
-                user_id=1                
+              caching.clear_cache()
+              user_id=1                
                 
         else:
             user_id=1
 
         us_id_temp=[user_id for i in range(len(co['book_id']))]
-        reccom = new_model.predict([pd.Series(us_id_temp),co['book_id'],co.iloc[:,1:]])
-        recc_df=pd.DataFrame(reccom,columns=["rating"])
-        recc_df["book_id"]=co['book_id'].values
-             
+        
+        @st.cache(suppress_st_warning=True)
+        def pred(new_model,us_id_temp,co,ratings_df,titlefile):
+          reccom = new_model.predict([pd.Series(us_id_temp),co['book_id'],co.iloc[:,1:]])
+          recc_df=pd.DataFrame(reccom,columns=["rating"])
+          recc_df["book_id"]=co['book_id'].values
 
-        df_new=ratings_df.where(ratings_df["user_id"]==user_id)
-        df_new.dropna(inplace=True)
-        list_books_seen=df_new['book_id'].tolist()
-        del df_new
 
-        recc_df_table = recc_df[~recc_df.book_id.isin(list_books_seen)]
-        recc_df.sort_values(by="rating",ascending=False,inplace=True)   
-        recc_df=recc_df.iloc[6:36].reset_index(drop=True)
+          df_new=ratings_df.where(ratings_df["user_id"]==user_id)
+          df_new.dropna(inplace=True)
+          list_books_seen=df_new['book_id'].tolist()
+          del df_new
 
-        #num= st.number_input('required_reccomondation_count',  min_value=2, max_value=30, value=5)
-        
-        num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
-        
-                    
-        if num!="":
-            num=int(num)
-            if num<2 or num>30:
-                num=2                
-                
-        else:
-            num=2
-        
-        recc_df_table =recc_df.iloc[:num]
-        recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
+          recc_df_table = recc_df[~recc_df.book_id.isin(list_books_seen)]
+          recc_df.sort_values(by="rating",ascending=False,inplace=True)   
+          recc_df=recc_df.iloc[6:36].reset_index(drop=True)
 
-        
-        recc_df_table_new = recc_df_table.iloc[:,:6].reset_index(drop=True)
-        
-        st.write(recc_df_table_new)
-        
+          #num= st.number_input('required_reccomondation_count',  min_value=2, max_value=30, value=5)
 
-        st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
-        for i in range(len(recc_df_table_new.index)):
-          st.image( recc_df_table.iloc[i,7],
-                width=200, # Manually Adjust the width of the image as per requirement
-            caption=recc_df_table.iloc[i,4]
-            )
+          num=st.text_input("Enter required_reccomondation_count (2-30) default 2")
+
+
+          if num!="":
+              num=int(num)
+              if num<2 or num>30:
+                  num=2                
+
+          else:
+              num=2
+
+          recc_df_table =recc_df.iloc[:num]
+          recc_df_table=pd.merge(recc_df_table,titlefile,left_on="book_id",right_on="book_id")
+
+
+          recc_df_table_new = recc_df_table.iloc[:,:6].reset_index(drop=True)
+
+          st.write(recc_df_table_new)
+
+
+          st.markdown(get_table_download_link(recc_df_table_new), unsafe_allow_html=True)
+          for i in range(len(recc_df_table_new.index)):
+            st.image( recc_df_table.iloc[i,7],
+                  width=200, # Manually Adjust the width of the image as per requirement
+              caption=recc_df_table.iloc[i,4]
+              )
+            
+        if st.button("Reccomend"):
+          pred(new_model,us_id_temp,co,ratings_df,titlefile)
 
 
         
