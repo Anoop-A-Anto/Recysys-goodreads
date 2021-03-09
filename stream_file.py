@@ -100,7 +100,7 @@ st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc
 
 st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
 
-menu=["Home", "Sign up", "Login"]
+menu=["Home", "Sign up", "Login","Books"]
 choice=st.sidebar.selectbox("Menu",menu)
 
 if choice=="Home":
@@ -233,7 +233,7 @@ elif choice=="Sign up":
     st.success("You have successfully created a valid account")
     st.info("Goto Login menu")
 
-elif choice=="Book":
+elif choice=="Books":
   st.subheader("Books Present")
   st.write(titlefile.iloc[:,:6])
   
