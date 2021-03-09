@@ -52,15 +52,11 @@ ratings_data = decompress_pickle('rat1.pbz2')
 
 ratings_df1=ratings_data.sort_values(by="user_id",ascending=True).reset_index(drop=True)
 
-ratings_df1=ratings_df1[ratings_df1["user_id"]<2501].reset_index(drop=True)
+ratings_df=ratings_df1[ratings_df1["user_id"]<2501].reset_index(drop=True)
 
-del ratings_data,ratings_df
+del ratings_data,ratings_df1
 
-@st.cache(suppress_st_warning=True)
-def ratings(ratings_df1):
-  return ratings_df1
 
-ratings_df = ratings(ratings_df1)
 
 
 new_model=tf.models.load_model("modelrecsys.h5")
