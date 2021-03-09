@@ -96,14 +96,15 @@ def view_all_users():
 
 st.title("      GOODREADS BOOKS   ")
 st.markdown("###***HYBRID BOOK RECOMMENDATION SYSTEM USING DEEP LEARNING***")
-st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=850)
 
-st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
 
 menu=["Home", "Sign up", "Login","Books"]
 choice=st.sidebar.selectbox("Menu",menu)
 
 if choice=="Home":
+  st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc.png",width=850)
+
+  st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
   st.markdown("_you are in HOME view_")
 
 elif choice=="Login":
@@ -139,7 +140,8 @@ When most people think of goodreads, they think of book reviews and book recomme
       
       elif task=="Start-Analytics":
 
-        st.subheader("Top N number of Book Recommondations predicted realtime")       
+        st.subheader("Top N number of Book Recommondations predicted realtime") 
+        st.markdown("Please click enter key after entering values to apply") 
 
         
         #user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
