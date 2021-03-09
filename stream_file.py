@@ -146,7 +146,7 @@ elif choice=="Login":
         us_id_temp=[user_id for i in range(len(co['book_id']))]
         
         @st.cache(suppress_st_warning=True)
-        def pred(new_model,us_id_temp,co,ratings_df,titlefile):
+        def pred(new_model,us_id_temp,co,ratings_df,user_id,titlefile):
           reccom = new_model.predict([pd.Series(us_id_temp),co['book_id'],co.iloc[:,1:]])
           recc_df=pd.DataFrame(reccom,columns=["rating"])
           recc_df["book_id"]=co['book_id'].values
@@ -191,7 +191,7 @@ elif choice=="Login":
               )
             
         if st.button("Reccomend"):
-          pred(new_model,us_id_temp,co,ratings_df,titlefile)
+          pred(new_model,us_id_temp,co,ratings_df,user_id,titlefile)
 
 
         
