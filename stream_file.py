@@ -100,7 +100,7 @@ st.image("https://images.gr-assets.com/misc/1397605627-1397605627_goodreads_misc
 
 st.markdown("Please use sidebar dropdown benu for ***Login/Signup***. (Login after Signing up entering custom username and password and tick login)")
 
-menu=["Home","Login", "Sign up","Book"]
+menu=["Home", "Sign up", "Login"]
 choice=st.sidebar.selectbox("Menu",menu)
 
 if choice=="Home":
@@ -211,11 +211,13 @@ When most people think of goodreads, they think of book reviews and book recomme
 
 
         
-      elif task=="Info":
+      elif task=="Account Details":
         st.subheader("User Profiles")
         user_result=view_all_users()
         clean_db=pd.DataFrame(user_result,columns=["Username","Password"])
         st.dataframe(clean_db)
+        
+      
 
     else:
       st.warning("Incorrect password/username")
@@ -232,7 +234,7 @@ elif choice=="Sign up":
     st.info("Goto Login menu")
 
 elif choice=="Book":
-  st.subheader("Enter Details...")
-  userid=st.sidebar.text_input("userid")
-  bookid=st.sidebar.text_input("bookid")
-  st.button("SUBMIT")
+  st.subheader("Books Present)
+  st.write(titlefile.iloc[:,:6])
+  
+  
