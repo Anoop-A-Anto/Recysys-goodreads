@@ -132,11 +132,12 @@ elif choice=="Login":
         
         #user_id = st.number_input('user_id',  min_value=1, max_value=53424, value=1)
         
-        user_id_inp=st.text_input("Enter user_id {1-53424} default 1")
+        user_id=st.text_input("Enter user_id {1-53424} default 1")
         
         if user_id!="":
             user_id=int(user_id)
-            if user_id<1 or user_id>53424:              
+            if user_id<1 or user_id>53424:
+              caching.clear_cache()
               user_id=1                
                 
         else:
