@@ -23,10 +23,10 @@ import _pickle as cPickle
 from streamlit import caching
 
 #bg image setting
-main_bg = "filios-sazeides-PBb5RPeGpDA-unsplash.jpg"
+main_bg = "sylvia-yang-_ar2ENzmqb0-unsplash.jpg"
 main_bg_ext = "jpg"
 
-side_bg = "sylvia-yang-_ar2ENzmqb0-unsplash.jpg"
+side_bg = "filios-sazeides-PBb5RPeGpDA-unsplash.jpg"
 side_bg_ext = "jpg"
 
 st.markdown(
