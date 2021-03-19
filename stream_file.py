@@ -251,7 +251,7 @@ elif choice=="Books":
 main_bg ="dbe7f843-39a6-42df-a52c-e2e94b5bc1cd.jpg"
 main_bg_ext = "jpg"
 
-side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
+side_bg = "ryunosuke-kikuno-U8kX_ydOpIk-unsplash.jpg"
 side_bg_ext = "jpg"
 
 image_string=f"""
