@@ -22,6 +22,8 @@ import _pickle as cPickle
 
 from streamlit import caching
 
+# Use the full page instead of a narrow central column
+st.beta_set_page_config(layout="wide")
 
 
 
