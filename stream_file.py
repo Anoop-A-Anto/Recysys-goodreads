@@ -30,7 +30,7 @@ side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
 side_bg_ext = "jpg"
 
 st.markdown(
-    format"""
+    f """
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
