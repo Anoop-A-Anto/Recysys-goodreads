@@ -248,10 +248,10 @@ elif choice=="Books":
     
 #bg image setting
 #main_bg = "jez-timms-8muUTAmcWU4-unsplash.jpg"
-main_bg ="dbe7f843-39a6-42df-a52c-e2e94b5bc1cd.jpg"
+main_bg ="hieu-vu-minh-He8-FZl-o10-unsplash.jpg"
 main_bg_ext = "jpg"
 
-side_bg = "ryunosuke-kikuno-U8kX_ydOpIk-unsplash.jpg"
+side_bg = "dbe7f843-39a6-42df-a52c-e2e94b5bc1cd.jpg"
 side_bg_ext = "jpg"
 
 image_string=f"""
