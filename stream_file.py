@@ -248,7 +248,7 @@ elif choice=="Books":
     
 #bg image setting
 #main_bg = "jez-timms-8muUTAmcWU4-unsplash.jpg"
-main_bg ="https://api.creativecommons.engineering/v1/thumbs/dbe7f843-39a6-42df-a52c-e2e94b5bc1cd"
+main_bg ="dbe7f843-39a6-42df-a52c-e2e94b5bc1cd.jpg"
 main_bg_ext = "jpg"
 
 side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
