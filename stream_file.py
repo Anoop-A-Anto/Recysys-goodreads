@@ -23,7 +23,7 @@ import _pickle as cPickle
 from streamlit import caching
 
 #bg image setting
-main_bg = "jaredd-craig-HH4WBGNyltc-unsplash.jpg"
+main_bg = "jez-timms-8muUTAmcWU4-unsplash.jpg"
 main_bg_ext = "jpg"
 
 side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
