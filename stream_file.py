@@ -22,26 +22,7 @@ import _pickle as cPickle
 
 from streamlit import caching
 
-#bg image setting
-main_bg = "jez-timms-8muUTAmcWU4-unsplash.jpg"
-main_bg_ext = "jpg"
 
-side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
-side_bg_ext = "jpg"
-
-st.markdown(
-    f """
-    <style>
-    .reportview-container {{
-        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-    }}
-   .sidebar .sidebar-content {{
-        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 # Pickle a file and then compress it into a file with extension 
@@ -262,4 +243,26 @@ elif choice=="Books":
   st.write(titlefile.iloc[:,:6])
   st.markdown(get_table_download_link(titlefile.iloc[:,:6]), unsafe_allow_html=True)
   
-  
+ 
+    
+    
+#bg image setting
+main_bg = "jez-timms-8muUTAmcWU4-unsplash.jpg"
+main_bg_ext = "jpg"
+
+side_bg = "janko-ferlic-sfL_QOnmy00-unsplash.jpg"
+side_bg_ext = "jpg"
+
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+   .sidebar .sidebar-content {{
+        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
