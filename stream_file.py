@@ -22,6 +22,27 @@ import _pickle as cPickle
 
 from streamlit import caching
 
+#bg image setting
+main_bg = "filios-sazeides-PBb5RPeGpDA-unsplash.jpg"
+main_bg_ext = "jpg"
+
+side_bg = "sylvia-yang-_ar2ENzmqb0-unsplash.jpg"
+side_bg_ext = "jpg"
+
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+   .sidebar .sidebar-content {{
+        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # Pickle a file and then compress it into a file with extension 
 def compressed_pickle(title, data):
